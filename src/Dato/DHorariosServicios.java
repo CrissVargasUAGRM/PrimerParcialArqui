@@ -27,7 +27,7 @@ public class DHorariosServicios {
     private String nombreServicio;
     private String nombreDoctor;
     private Date fecha;
-    private Time hora;
+    private String hora;
     
     private final Conexion con;
     private PreparedStatement consulta;
@@ -38,7 +38,7 @@ public class DHorariosServicios {
         this.con = Conexion.getInstancia();
     }
 
-    public DHorariosServicios(int id, int idServicio, int idHorario, String detalle, String estado, int idDoctor, String nombreServicio, String nombreDoctor, Date fecha, Time hora) {
+    public DHorariosServicios(int id, int idServicio, int idHorario, String detalle, String estado, int idDoctor, String nombreServicio, String nombreDoctor, Date fecha, String hora) {
         this.id = id;
         this.idServicio = idServicio;
         this.idHorario = idHorario;
@@ -133,11 +133,11 @@ public class DHorariosServicios {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
     

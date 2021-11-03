@@ -59,7 +59,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Especialidades");
+        jMenuItem1.setText("Especialidad");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -126,14 +126,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEspecialidadActionPerformed
         FrmEspecialidad frm = new FrmEspecialidad();
         escritorio.add(frm);
-        frm.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void menuEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEspecialidadActionPerformed
-        
+        frm.setVisible(true);        
     }//GEN-LAST:event_menuEspecialidadActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -160,6 +156,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         escritorio.add(frm);
         frm.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FrmEspecialidad frm = new FrmEspecialidad();
+        escritorio.add(frm);
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
