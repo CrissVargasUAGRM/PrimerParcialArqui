@@ -10,7 +10,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,8 +59,15 @@ public class DHorariosServicios {
         this.idDoctor = idDoctor;
         this.con = Conexion.getInstancia();
     }
-    
-    
+
+    public DHorariosServicios(int id, String nombreServicio, Date fecha, String hora, String nombreDoctor) {
+        this.id = id;
+        this.nombreServicio = nombreServicio;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.nombreDoctor = nombreDoctor;
+        this.con = Conexion.getInstancia();
+    }
 
     public int getId() {
         return id;
@@ -139,6 +147,26 @@ public class DHorariosServicios {
 
     public void setHora(String hora) {
         this.hora = hora;
+    }
+    
+    public List<DHorariosServicios> listar(){
+        List<DHorariosServicios> registros = new ArrayList<>();
+        try {
+            consulta = con.conectar().prepareStatement("SELECT horarioservicio.id, servicio.nombre as servicio, horario.fecha, horario.hora, doctor.nombre as doctor FROM public.horarioservicio inner join public.horario on horarioservicio.fk_horario_id = horario.id inner join public.servicio on horarioservicio.fk_servicio_id = servicio.id inner join public.doctor on horarioservicio.fk_doctor_id = doctor.id");
+            resp = consulta.executeQuery();
+            while(resp.next()){
+                registros.add(new DHorariosServicios(resp.getInt(1), resp.getString(2), resp.getDate(3), resp.getString(4), resp.getString(5)));
+            }
+            consulta.close();
+            resp.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally{
+            consulta = null;
+            resp = null;
+            con.desconectar();
+        }
+        return registros;
     }
     
     public boolean cambiarEstado(int id){

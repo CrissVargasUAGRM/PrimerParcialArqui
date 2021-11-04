@@ -7,6 +7,7 @@ package Presentacion;
 
 import Dato.DEspecialidad;
 import Negocio.NDoctor;
+import Negocio.NEspecilidad;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -14,17 +15,19 @@ import javax.swing.JOptionPane;
  *
  * @author Christian Vargas
  */
-public class FrmDoctor extends javax.swing.JInternalFrame {
+public class PDoctor extends javax.swing.JInternalFrame {
     
     private final NDoctor DOCTOR;
+    private final NEspecilidad ESPECIALIDAD;
     private String accion;
 
     /**
      * Creates new form FrmDoctor
      */
-    public FrmDoctor() {
+    public PDoctor() {
         initComponents();
         this.DOCTOR = new NDoctor();
+        this.ESPECIALIDAD = new NEspecilidad();
         this.listar();
         this.accion = "guardar";
         this.cargarEspecialidades();
@@ -50,7 +53,7 @@ public class FrmDoctor extends javax.swing.JInternalFrame {
     }
     
     private void cargarEspecialidades(){
-        DefaultComboBoxModel items = this.DOCTOR.especialidades();
+        DefaultComboBoxModel items = this.ESPECIALIDAD.especialidades();
         cboEspecialidad.setModel(items);
     }
 

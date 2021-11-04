@@ -2,7 +2,6 @@
 package Negocio;
 
 import Dato.DDoctor;
-import Dato.DEspecialidad;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -14,12 +13,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NDoctor {
     private final DDoctor DATOS;
-    private final DEspecialidad DATOSESP;
     private DefaultTableModel modeloTabla;
 
     public NDoctor() {
         this.DATOS = new DDoctor();
-        this.DATOSESP = new DEspecialidad();
     }
     
     public DefaultTableModel listar(){
@@ -86,16 +83,6 @@ public class NDoctor {
         }else{
             return "No se pudo eliminar el doctor.";
         }
-    }
-    
-    public DefaultComboBoxModel especialidades(){
-        DefaultComboBoxModel items = new DefaultComboBoxModel();
-        List<DEspecialidad> lista = new ArrayList<>();
-        lista = DATOSESP.listar();
-        for (DEspecialidad item : lista) {
-            items.addElement(new DEspecialidad(item.getId(), item.getNombre(), item.getDescripcion(), item.getArea()));
-        }
-        return items;
     }
     
     public DefaultComboBoxModel doctores(){

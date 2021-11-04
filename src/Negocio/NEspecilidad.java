@@ -4,6 +4,7 @@ package Negocio;
 import Dato.DEspecialidad;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -67,5 +68,15 @@ public class NEspecilidad {
         }else{
             return "Error al eliminar";
         }
+    }
+    
+        public DefaultComboBoxModel especialidades(){
+        DefaultComboBoxModel items = new DefaultComboBoxModel();
+        List<DEspecialidad> lista = new ArrayList<>();
+        lista = DATOS.listar();
+        for (DEspecialidad item : lista) {
+            items.addElement(new DEspecialidad(item.getId(), item.getNombre(), item.getDescripcion(), item.getArea()));
+        }
+        return items;
     }
 }

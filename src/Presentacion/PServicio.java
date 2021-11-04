@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Dato.DCategoria;
+import Negocio.NCategoria;
 import Negocio.NServicio;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -14,16 +15,18 @@ import javax.swing.JOptionPane;
  *
  * @author Christian Vargas
  */
-public class FrmServicio extends javax.swing.JInternalFrame {
+public class PServicio extends javax.swing.JInternalFrame {
+    private final NCategoria CATEGORIA;
     private final NServicio SERVICIO;
     private String accion;
 
     /**
      * Creates new form FrmServicio
      */
-    public FrmServicio() {
+    public PServicio() {
         initComponents();
         this.SERVICIO = new NServicio();
+        this.CATEGORIA = new NCategoria();
         this.listar();
         this.accion = "guardar";
         this.cargarCategorias();
@@ -41,7 +44,7 @@ public class FrmServicio extends javax.swing.JInternalFrame {
     }
     
     private void cargarCategorias(){
-        DefaultComboBoxModel items = this.SERVICIO.categorias();
+        DefaultComboBoxModel items = this.CATEGORIA.categorias();
         cboCategoria.setModel(items);
     }
     

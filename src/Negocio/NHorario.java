@@ -44,23 +44,10 @@ public class NHorario {
         return this.modeloTabla;
     }
     
-    public String insertar(Date fecha, String hora, DefaultTableModel horariosServicios){
+    public String insertar(Date fecha, String hora, List<DHorariosServicios> horariosServicios){
         DATOS.setFecha(fecha);
         DATOS.setHora(hora);
-        
-        List<DHorariosServicios> arraysHorariosServ = new ArrayList<>();
-        int servicioId;
-        String detalle;
-        int doctorID;
-        
-        for(int i = 0; i<horariosServicios.getRowCount(); i++){
-            servicioId = Integer.parseInt(String.valueOf(horariosServicios.getValueAt(i, 0)));
-            detalle = String.valueOf(horariosServicios.getValueAt(i, 1));
-            doctorID = Integer.parseInt(String.valueOf(horariosServicios.getValueAt(i, 2)));
-            arraysHorariosServ.add(new DHorariosServicios(servicioId, detalle, doctorID));
-        }
-        
-        DATOS.setHorariosServicios(arraysHorariosServ);
+        DATOS.setHorariosServicios(horariosServicios);
         
         if(DATOS.insertar(fecha, hora, DATOS)){
             return "OK";

@@ -13,14 +13,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NServicio {
     private final DServicio DATOS;
-    private final DCategoria DATOSCAT;
-    private final DServicio DATOSSERV;
     private DefaultTableModel modeloTabla;
 
     public NServicio() {
         this.DATOS = new DServicio();
-        this.DATOSCAT = new DCategoria();
-        this.DATOSSERV = new DServicio();
     }
     
     public DefaultTableModel listar(){
@@ -42,16 +38,6 @@ public class NServicio {
             this.modeloTabla.addRow(registros);
         }
         return this.modeloTabla;
-    }
-    
-    public DefaultComboBoxModel categorias(){
-        DefaultComboBoxModel items = new DefaultComboBoxModel();
-        List<DCategoria> lista = new ArrayList<>();
-        lista = DATOSCAT.listar();
-        for (DCategoria item : lista) {
-            items.addElement(new DCategoria(item.getId(), item.getNombre(), item.getDescripcion()));
-        }
-        return items;
     }
     
     public String insertar(String nombre, String descripcion, int idCat){
@@ -89,7 +75,7 @@ public class NServicio {
     public DefaultComboBoxModel servicios(){
         DefaultComboBoxModel items = new DefaultComboBoxModel();
         List<DServicio> lista = new ArrayList<>();
-        lista = DATOSSERV.listar();
+        lista = DATOS.listar();
         for (DServicio item : lista) {
             items.addElement(new DServicio(item.getId(), item.getNombre()));
         }

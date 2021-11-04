@@ -12,13 +12,13 @@ import javax.swing.JOptionPane;
  *
  * @author Christian Vargas
  */
-public class FrmEspecialidad extends javax.swing.JInternalFrame {
+public class PEspecialidad extends javax.swing.JInternalFrame {
     private final NEspecilidad especialidad;
     private String accion;
     /**
      * Creates new form FrmEspecialidad
      */
-    public FrmEspecialidad() {
+    public PEspecialidad() {
         initComponents();
         this.especialidad = new NEspecilidad();
         this.listar();
