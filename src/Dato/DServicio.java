@@ -49,8 +49,6 @@ public class DServicio {
         this.con = Conexion.getInstancia();
     }
     
-    
-    
     public int getId() {
         return id;
     }

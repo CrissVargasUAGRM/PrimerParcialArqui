@@ -16,7 +16,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -28,10 +27,8 @@ public class PHorarios extends javax.swing.JInternalFrame {
     private final NHorario HORARIO;
     private final NServicio SERVICIO;
     private final NDoctor DOCTOR;
-    private String accion;
     
     public DefaultTableModel horariosServicios;
-    public JFrame contenedor;
 
     /**
      * Creates new form FrmServicio
@@ -42,7 +39,6 @@ public class PHorarios extends javax.swing.JInternalFrame {
         this.SERVICIO = new NServicio();
         this.DOCTOR = new NDoctor();
         this.listar();
-        this.accion = "guardar";
         this.cargarDoctores();
         this.cargarServicios();
         this.crearHorariosServicios();

@@ -49,7 +49,7 @@ public class NHorario {
         DATOS.setHora(hora);
         DATOS.setHorariosServicios(horariosServicios);
         
-        if(DATOS.insertar(fecha, hora, DATOS)){
+        if(DATOS.insertar(fecha, hora, horariosServicios)){
             return "OK";
         }else{
             return "Error en el registro";

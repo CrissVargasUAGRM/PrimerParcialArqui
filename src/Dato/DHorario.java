@@ -100,7 +100,7 @@ public class DHorario {
         return registros;
     }
     
-    public boolean insertar(Date fecha, String hora, DHorario arreglo){
+    public boolean insertar(Date fecha, String hora, List<DHorariosServicios> arreglo){
         flag = false;
         Connection conn = null;
         try {
@@ -121,7 +121,7 @@ public class DHorario {
             if(filaAfectada == 1){
                 String sql2 = "INSERT INTO public.horarioservicio(fk_servicio_id, fk_horario_id, detalle, estado, fk_doctor_id) VALUES (?, ?, ?, 'activo', ?)";
                 consulta = conn.prepareStatement(sql2);
-                for(DHorariosServicios item : arreglo.getHorariosServicios()){
+                for(DHorariosServicios item : arreglo){
                     consulta.setInt(1, item.getIdServicio());
                     consulta.setInt(2, idGenerado);
                     consulta.setString(3, item.getDetalle());

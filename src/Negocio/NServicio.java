@@ -2,7 +2,6 @@
 package Negocio;
 
 import Dato.DServicio;
-import Dato.DCategoria;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
