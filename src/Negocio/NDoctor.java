@@ -2,6 +2,7 @@
 package Negocio;
 
 import Dato.DDoctor;
+import Dato.DEspecialidad;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -13,10 +14,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NDoctor {
     private final DDoctor DATOS;
+    private final DEspecialidad DATOSESP;
     private DefaultTableModel modeloTabla;
 
     public NDoctor() {
         this.DATOS = new DDoctor();
+        this.DATOSESP = new DEspecialidad();
     }
     
     public DefaultTableModel listar(){
