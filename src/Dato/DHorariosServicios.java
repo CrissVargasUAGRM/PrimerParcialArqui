@@ -152,7 +152,7 @@ public class DHorariosServicios {
     public List<DHorariosServicios> listar(){
         List<DHorariosServicios> registros = new ArrayList<>();
         try {
-            consulta = con.conectar().prepareStatement("SELECT horarioservicio.id, servicio.nombre as servicio, horario.fecha, horario.hora, doctor.nombre as doctor FROM public.horarioservicio inner join public.horario on horarioservicio.fk_horario_id = horario.id inner join public.servicio on horarioservicio.fk_servicio_id = servicio.id inner join public.doctor on horarioservicio.fk_doctor_id = doctor.id");
+            consulta = con.conectar().prepareStatement("SELECT horarioservicio.id, servicio.nombre as servicio, horario.fecha, horario.hora, doctor.nombre as doctor FROM public.horarioservicio inner join public.horario on horarioservicio.fk_horario_id = horario.id inner join public.servicio on horarioservicio.fk_servicio_id = servicio.id inner join public.doctor on horarioservicio.fk_doctor_id = doctor.id where horarioservicio.estado = 'activo'");
             resp = consulta.executeQuery();
             while(resp.next()){
                 registros.add(new DHorariosServicios(resp.getInt(1), resp.getString(2), resp.getDate(3), resp.getString(4), resp.getString(5)));
@@ -173,6 +173,7 @@ public class DHorariosServicios {
         flag = false;
         try {
             consulta = con.conectar().prepareStatement("UPDATE public.horarioservicio SET estado='inactivo' WHERE horarioservicio.id = ?");
+            consulta.setInt(1, id);
             if(consulta.executeUpdate() > 0){
                 flag = true;
             }

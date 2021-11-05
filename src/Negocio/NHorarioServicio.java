@@ -5,10 +5,7 @@
  */
 package Negocio;
 
-import Dato.DDoctor;
-import Dato.DHorario;
 import Dato.DHorariosServicios;
-import Dato.DServicio;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +17,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NHorarioServicio {
     private final DHorariosServicios DATOS;
-    private final DServicio SERVICIO;
-    private final DDoctor DOCTOR;
-    private final DHorario HORARIO;
     
     private DefaultTableModel modeloTabla;
 
     public NHorarioServicio() {
         this.DATOS = new DHorariosServicios();
-        this.SERVICIO = new DServicio();
-        this.DOCTOR = new DDoctor();
-        this.HORARIO = new DHorario();
     }
     
     public DefaultTableModel listar(){
@@ -54,4 +45,12 @@ public class NHorarioServicio {
         return this.modeloTabla;
     }
     
+    public String cambiarEstado(int id){
+        DATOS.setId(id);
+        if(DATOS.cambiarEstado(id)){
+            return "OK";
+        }else{
+            return "Error al cambiar el estado";
+        }
+    }
 }
