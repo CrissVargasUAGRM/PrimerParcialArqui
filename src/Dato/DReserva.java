@@ -120,7 +120,7 @@ public class DReserva {
         this.servicio = servicio;
     }
     
-        public List<DReserva> listar(){
+    public List<DReserva> listar(){
         List<DReserva> registros = new ArrayList<>();
         try {
             consulta = con.conectar().prepareStatement("SELECT reserva.id, reserva.detalle, cliente.nombre as cliente, horario.fecha, horario.hora, servicio.nombre as servicio FROM public.reserva inner join public.cliente on reserva.fk_cliente_id = cliente.id inner join public.horarioservicio on reserva.fk_horarioservicio_id = horarioservicio.id inner join public.horario on horarioservicio.fk_horario_id = horario.id inner join public.servicio on horarioservicio.fk_servicio_id = servicio.id");
